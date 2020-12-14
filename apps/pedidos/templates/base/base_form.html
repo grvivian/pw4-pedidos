@@ -1,0 +1,28 @@
+{% extends 'base/base_sistema.html' %}
+
+{% block title %}
+  Formulário
+  {% block form_name %}{% endblock form_name %}
+{% endblock title %}
+
+{% block conteudo %}
+
+  <h1>
+    {% if object %}Atualizar{% else %}Criar{% endif %}
+    {% block form_header %}{% endblock form_header %}
+  </h1> 
+
+  {% block form %}
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit">
+      {% block form_button__text %}
+      {% if object %}Atualizar{% else %}Criar{% endif %}
+      {% endblock form_button__text %}
+      </button>
+    </form>
+    
+  {% endblock form %}
+
+{% endblock conteudo %}
