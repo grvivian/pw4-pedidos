@@ -1,0 +1,22 @@
+{% extends 'base/base_sistema.html' %}
+
+{% block title %}
+  Excluir
+  {% block model_name %}
+
+  {% endblock model_name %}
+
+{% endblock title %}
+
+{% block conteudo %}
+  <form action="" method="POST">
+  {% csrf_token %}
+
+  Tem certeza que deseja excluir o{% block model_name__text %}{% endblock model_name__text %}
+  {% block model %}{% endblock model %}
+
+  <a href="{{ object.get_absolute_url }}">Cancelar</a>
+  <button type="submit">Confirmar</button>
+</form>
+
+{% endblock conteudo %}

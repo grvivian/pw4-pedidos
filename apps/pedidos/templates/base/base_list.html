@@ -1,0 +1,21 @@
+{% extends 'base/base_sistema.html' %}
+
+{% block title %}Listagem de 
+
+  {% block list_title_model_name %}{% endblock list_title_model_name %}
+
+{% endblock title %}
+
+
+{% block conteudo %}
+
+  <h1>{% block lista_header %}{% endblock lista_header %}</h1>
+
+  <a href="{% block botao_add__url %}{% endblock botao_add__url %}">Adicionar</a>
+  <br>
+  <br>
+
+{% block lista %}
+{% endblock lista %}
+
+{% endblock conteudo %}
