@@ -24,5 +24,5 @@ class ClienteForm(forms.ModelForm):
     ]
     
     def save(self, *args, **kwargs):
-      cliente = super(CLienteForm, self).save(commit=False,*args, **kwargs)
+      cliente = super(ClienteForm, self).save(commit=False,*args, **kwargs)
       return cliente
