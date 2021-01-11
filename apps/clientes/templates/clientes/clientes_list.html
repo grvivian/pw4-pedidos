@@ -1,0 +1,15 @@
+{% extends 'base/base_list.html' %}
+
+{% block list_title_model_name %}Clientes{% endblock list_title_model_name %}
+{% block lista_header %}Clientes{% endblock lista_header %}
+
+{% block botao_add__url %}{% url 'cliente__cria' %}{% endblock botao_add__url %}
+
+{% block lista %}
+
+  {% for cliente in object_list %}
+    <a href="{{ cliente.get_absolute_url }}">{{ cliente.nome }}</a>
+    <br>
+  {% endfor %}
+
+{% endblock lista %}
