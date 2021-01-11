@@ -1,0 +1,16 @@
+{% extends 'base/base_sistema.html' %}
+
+{% block title %} Produto - {{ object.nome }} {% endblock %}
+
+{% block conteudo %}
+
+  <h1>{{ object.nome }}</h1>
+
+  <br>
+    <a href="{{ object.get_update_url }}">Atualizar</a>
+    <a href="{{ object.get_delete_url }}">Excluir</a>
+  <br>
+
+  <p><b>Valor:</b>{{ object.valor }}</p>
+
+{% endblock conteudo %}

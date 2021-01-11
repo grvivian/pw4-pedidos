@@ -5,10 +5,12 @@ from django.contrib.auth import views as auth_views
 # Project
 from .pedidos.views import PedidosHome
 from .clientes import urls
+from .produtos import urls
 
 urlpatterns = [
     path('home/', PedidosHome.as_view(), name='pedidos__home'),
     path('clientes/', include('apps.clientes.urls')),
+    path('produtos/', include('apps.produtos.urls')),
     # Auth
     path('login/', auth_views.LoginView.as_view(), {
         'template_name': 'registration/login.html',
