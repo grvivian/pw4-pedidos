@@ -38,7 +38,7 @@ class Produto(models.Model):
     verbose_name="Categoria",
     on_delete=models.CASCADE
   )
-  unidade = models.CharField(max_length=3, choices=UNIDADES, verbose_name="Valor")
+  unidade = models.CharField(max_length=3, choices=UNIDADES, verbose_name="Unidade")
 
   class Meta:
     verbose_name = 'Produto'
