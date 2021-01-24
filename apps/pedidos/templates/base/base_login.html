@@ -1,9 +1,17 @@
 {% extends 'base/base.html' %}
 
 {% block body %}
-  <div class="login">
-    {% block form %}
 
-    {% endblock form %}
+<div class="content">
+  <div class="d-flex align-items-center justify-content-center min-vh-100">
+    <div class="card">
+      <h5 class="card-header">{% block form__title %}Pedidos{% endblock form__title %}</h5>
+      <div class="card-body">
+       {% block form %}
+
+       {% endblock form %}
+      </div>
+    </div>
   </div>
+</div>
 {% endblock body %}

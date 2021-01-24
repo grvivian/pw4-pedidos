@@ -8,15 +8,19 @@
 
 {% endblock title %}
 
+{% block conteudo__header__text %}Excluir{% endblock conteudo__header__text %}
+
 {% block conteudo %}
   <form action="" method="POST">
   {% csrf_token %}
 
-  Tem certeza que deseja excluir o{% block model_name__text %}{% endblock model_name__text %}
-  {% block model %}{% endblock model %}
+  <p>Tem certeza que deseja excluir o {% block model_name__text %}{% endblock model_name__text %}
+  {% block model %}{% endblock model %}?</p>
 
-  <a href="{{ object.get_absolute_url }}">Cancelar</a>
-  <button type="submit">Confirmar</button>
+  <div class="btn-group btn-block" role="group">
+    <a href="{{ object.get_absolute_url }}" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Confirmar</button>
+  </div>
 </form>
 
 {% endblock conteudo %}

@@ -1,15 +1,28 @@
 {% extends 'base/base_list.html' %}
 
-{% block list_title_model_name %}Clientes{% endblock list_title_model_name %}
-{% block lista_header %}Clientes{% endblock lista_header %}
+
+{% block list_title__model_name %}Clientes{% endblock list_title__model_name %}
+{% block conteudo__header__text %}Clientes{% endblock conteudo__header__text %}
 
 {% block botao_add__url %}{% url 'cliente__cria' %}{% endblock botao_add__url %}
 
-{% block lista %}
+{% block lista__header %}
+  <tr>
+    <th scope="col">Nome</th>
+    <th scope="col">Cidade</th>
+    <th scope="col">Email</th>
+    <th scope="col">Data de Nascimento</th>
+  </tr>
+{% endblock lista__header %}
 
+{% block lista %}
   {% for cliente in object_list %}
-    <a href="{{ cliente.get_absolute_url }}">{{ cliente.nome }}</a>
-    <br>
+    <tr onclick="to('{{ cliente.get_absolute_url }}')">
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.cidade }}</td>
+      <td>{{ cliente.email }}</td>
+      <td>{{ cliente.data_nascimento|date:"d/m/Y" }}</td>
+    </tr>
   {% endfor %}
 
 {% endblock lista %}

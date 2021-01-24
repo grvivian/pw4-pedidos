@@ -1,21 +1,27 @@
 {% extends 'base/base_sistema.html' %}
 
-{% block title %}Listagem de 
+{% block title %}Listagem de {% block list_title__model_name %}{% endblock list_title__model_name %}{% endblock title %}
 
-  {% block list_title_model_name %}{% endblock list_title_model_name %}
 
-{% endblock title %}
+
+
+{% block conteudo__header__actions %}
+  <a href="{% block botao_add__url %}{% endblock botao_add__url %}" class="btn btn-primary">Adicionar</a>
+{% endblock conteudo__header__actions %}
 
 
 {% block conteudo %}
-
-  <h1>{% block lista_header %}{% endblock lista_header %}</h1>
-
-  <a href="{% block botao_add__url %}{% endblock botao_add__url %}">Adicionar</a>
-  <br>
-  <br>
-
-{% block lista %}
-{% endblock lista %}
+  <div class="row">
+    <div class="col">
+      <table class="table table-hover">
+        <thead>
+          {% block lista__header %}{% endblock lista__header %}
+        </thead>
+        <tbody>
+          {% block lista %}{% endblock lista %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 {% endblock conteudo %}

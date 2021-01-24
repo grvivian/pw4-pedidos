@@ -2,17 +2,19 @@
 
 {% block title %} Cliente - {{ object.nome }} {% endblock %}
 
+{% block conteudo__header__text %}
+  {{ object.nome }}
+{% endblock conteudo__header__text %}
+
+{% block conteudo__header__actions %}
+  <a href="{{ object.get_update_url }}" class="btn btn-primary">Atualizar</a>
+  <a href="{{ object.get_delete_url }}" class="btn btn-primary btn-danger">Excluir</a>
+{% endblock conteudo__header__actions %}
+
 {% block conteudo %}
 
-  <h1>{{ object.nome }}</h1>
-
-  <br>
-    <a href="{{ object.get_update_url }}">Atualizar</a>
-    <a href="{{ object.get_delete_url }}">Excluir</a>
-  <br>
-
-  <p><b>CPF:</b>{{ object.cpf }}</p>
-  <p><b>Email:</b>{{ object.email }}</p>
+  <p><b>CPF: </b>{{ object.cpf }}</p>
+  <p><b>Email: </b>{{ object.email }}</p>
 
 {{ pedidos }}
 

@@ -2,8 +2,50 @@
 
 {% block body %}
   <!-- nav -->
-  {% block conteudo %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Pedidos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContet">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" aria-controls="navbarSupportedContent">
+      <ul class="navbar-nav nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pedidos</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cliente__list' %}">Clientes</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'produto__list' %}">Produtos</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Sair</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-  {% endblock conteudo %}
+  <div class="content p-3">
+    <div class="card">
+      <div class="card-body">
+       {% block conteudo_header %}
+         <div class="row">
+           <div class="col">
+             <h3>{% block conteudo__header__text %}{% endblock conteudo__header__text %}</h3>
+           </div>
+           <div class="col">
+             <div class="float-right">
+               {% block conteudo__header__actions %}{% endblock conteudo__header__actions %}
+             </div>
+           </div>
+         </div>
+       {% endblock conteudo_header %}   
+       {% block conteudo %}
+
+       {% endblock conteudo %}
+      </div>
+    </div>
+  </div>
+
   <!-- footer -->
 {% endblock body %}
