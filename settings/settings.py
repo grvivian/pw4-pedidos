@@ -125,7 +125,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/home/'
+LOGIN_REDIRECT_URL = '/pedidos/'
 LOGOUT_URL = '/logout/'
 PASSWORD_RESET_TIMEOUT_DAYS = 1
 

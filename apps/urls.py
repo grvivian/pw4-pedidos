@@ -3,14 +3,14 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 # Project
-from .pedidos.views import PedidosHome
-from .clientes import urls
-from .produtos import urls
+#from .pedidos import urls
+#from .clientes import urls
+#from .produtos import urls
 
-urlpatterns = [
-    path('home/', PedidosHome.as_view(), name='pedidos__home'),
+urlpatterns = [    
     path('clientes/', include('apps.clientes.urls')),
     path('produtos/', include('apps.produtos.urls')),
+    path('pedidos/', include('apps.pedidos.urls')),
     # Auth
     path('login/', auth_views.LoginView.as_view(), {
         'template_name': 'registration/login.html',

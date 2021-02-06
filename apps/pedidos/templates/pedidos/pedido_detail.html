@@ -1,0 +1,60 @@
+{% extends 'base/base_sistema.html' %}
+
+{% block title %} Pedido - {{ object.nome }} {% endblock %}
+
+
+{% block conteudo__header__text %}
+  Pedido #{{ object.pk }} - {{ object.cliente.nome }}
+{% endblock conteudo__header__text %}
+
+
+{% block conteudo__header__actions %}
+    <a href="{{ object.get_add_item_url }}" class="btn btn-success">Adicionar Produto</a>
+  <a href="{{ object.get_update_url }}" class="btn btn-primary">Atualizar</a>
+  <a href="{{ object.get_delete_url }}" class="btn btn-primary btn-danger">Excluir</a>
+{% endblock conteudo__header__actions %}
+
+{% block conteudo %}
+
+  <p><b>Data: </b>{{ object.data|date:"d/m/Y" }}</p>
+  <p><b>Status: </b>{{ object.get_status_display }}</p>
+  <p><b>Total: </b>R$ {{ object.total }}</p>
+
+  <h3>Itens:</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Unidade</th>
+            <th>Valor Base</th>
+            <th>Subtotal</th>
+            <th style="width: 15%">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in object.get_itens %}
+            <tr>
+              <td>{{ item.produto.nome }}</td>
+              <td>{{ item.quantidade }}</td>
+              <td>{{ item.produto.get_unidade_display }}</td>
+              <td>R$ {{ item.valor_base }}</td>
+              <td>R$ {{ item.subtotal }}</td>
+              <td>
+                <a href="{{ item.get_update_url }}" class="btn btn-primary">Atualizar</a>
+                <a href="{{ item.get_delete_url }}" class="btn btn-primary btn-danger">Excluir</a>
+              </td>
+            </tr>
+          {% endfor %}
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>R$ {{ object.total }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+{% endblock conteudo %}

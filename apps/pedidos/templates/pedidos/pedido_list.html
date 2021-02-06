@@ -1,0 +1,28 @@
+{% extends 'base/base_list.html' %}
+
+
+{% block list_title__model_name %}Pedidos{% endblock list_title__model_name %}
+{% block conteudo__header__text %}Pedidos{% endblock conteudo__header__text %}
+
+{% block botao_add__url %}{% url 'pedido__cria' %}{% endblock botao_add__url %}
+
+{% block lista__header %}
+  <tr>
+    <th scope="col">Cliente</th>
+    <th scope="col">Data</th>
+    <th scope="col">Status</th>
+    <th scope="col">Total</th>
+  </tr>
+{% endblock lista__header %}
+
+{% block lista %}
+  {% for pedido in object_list %}
+    <tr onclick="to('{{ pedido.get_absolute_url }}')">
+      <td>{{ pedido.cliente }}</td>
+      <td>{{ pedido.data|date:"d/m/Y" }}</td>
+      <td>{{ pedido.get_status_display }}</td>
+      <td>{{ pedido.total }}</td>
+    </tr>
+  {% endfor %}
+
+{% endblock lista %}

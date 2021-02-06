@@ -1,0 +1,5 @@
+{% extends 'base/base_delete.html' %}
+
+{% block model_name %}Pedido{% endblock model_name %}
+{% block model_name__text %}Pedido{% endblock model_name__text %}
+{% block model %}#{{ object.pk }} - {{ object.cliente.nome }}{% endblock model %}
