@@ -15,6 +15,36 @@ from django.views.generic.detail import DetailView
 from .models import Pedido, Item
 from .forms import PedidoForm, ItemForm
 
+class PedidoCriadoListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
+  queryset = Pedido.objects.filter(status=Pedido.CRIADO)
+  template_name = 'pedidos/pedido_list.html'
+  paginate_by = 1
+
+  def get_context_data(self):
+    context = super().get_context_data()
+    context["CRIADO"] = True
+    return context
+
+class PedidoFechadoListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
+  queryset = Pedido.objects.filter(status=Pedido.FECHADO)
+  template_name = 'pedidos/pedido_list.html'
+  paginate_by = 1
+
+  def get_context_data(self):
+    context = super().get_context_data()
+    context["FECHADO"] = True
+    return context
+
+class PedidoEnviadoListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
+  queryset = Pedido.objects.filter(status=Pedido.ENVIADO)
+  template_name = 'pedidos/pedido_list.html'
+  paginate_by = 1
+
+  def get_context_data(self):
+    context = super().get_context_data()
+    context["ENVIADO"] = True
+    return context
+
 class PedidoCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
   template_name = 'pedidos/pedido_form.html'
   model = Pedido
@@ -27,17 +57,6 @@ class PedidoUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
   model = Pedido
   form_class = PedidoForm
   success_message = 'Pedido atualizado com sucesso!'
-
-class PedidoListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
-  model = Pedido
-  template_name = 'pedidos/pedido_list.html'
-
-  def get_context_data(self):
-    context = super().get_context_data()
-    context["CRIADOS"] = context["object_list"].filter(status=Pedido.CRIADO)
-    context["FECHADOS"] = context["object_list"].filter(status=Pedido.FECHADO)
-    context["ENVIADOS"] = context["object_list"].filter(status=Pedido.ENVIADO)
-    return context
 
 class PedidoDetailView(LoginRequiredMixin, SuccessMessageMixin, DetailView):
   model = Pedido

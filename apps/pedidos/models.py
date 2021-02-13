@@ -46,7 +46,7 @@ class Pedido(models.Model):
   STATUSES = [
     (CRIADO, "Criado"),
     (FECHADO, "Fechado"),
-    (FECHADO, "Enviado"),
+    (ENVIADO, "Enviado"),
   ]
   cliente = models.ForeignKey(
     "clientes.Cliente",

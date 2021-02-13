@@ -6,11 +6,26 @@
 
 {% block botao_add__url %}{% url 'pedido__cria' %}{% endblock botao_add__url %}
 
+
+{% block before_table %}
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link {% if CRIADO %}active{% endif %}" href="{% url 'pedido__list' %}">Criados</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if FECHADO %}active{% endif %}" href="{% url 'pedido__list__fechado' %}">Fechados</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if ENVIADO %}active{% endif %}" href="{% url 'pedido__list__enviado' %}">Enviados</a>
+  </li>
+</ul>
+{% endblock before_table %}
+
+
 {% block lista__header %}
   <tr>
     <th scope="col">Cliente</th>
     <th scope="col">Data</th>
-    <th scope="col">Status</th>
     <th scope="col">Total</th>
   </tr>
 {% endblock lista__header %}

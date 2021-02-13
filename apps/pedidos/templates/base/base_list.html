@@ -11,6 +11,9 @@
 
 
 {% block conteudo %}
+
+{% block before_table %}{% endblock before_table %}
+
   <div class="row">
     <div class="col">
       <table class="table table-hover">
@@ -23,5 +26,31 @@
       </table>
     </div>
   </div>
+
+{% block paginacao %}
+
+  {% if is_paginated %}
+  <nav aria-label="">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1" aria-disabled="true"> < </a>
+        </li>
+      {% endif %}
+      {% for i in page_obj.paginator.page_range %}
+        <li class="page-item {% ifequal view.request.GET.page i|slugify  %}active{% endifequal %}">
+          <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+      {% endfor %}
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}" tabindex="-1" aria-disabled="true"> > </a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+
+{% endblock paginacao %}
 
 {% endblock conteudo %}

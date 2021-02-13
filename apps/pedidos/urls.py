@@ -13,5 +13,7 @@ urlpatterns = [
   path('<int:pk>/atualizar/', views.PedidoUpdateView.as_view(), name='pedido__atualiza'),
   path('<int:pk>/excluir/', views.PedidoDeleteView.as_view(), name='pedido__delete'),
   path('<int:pk>/', views.PedidoDetailView.as_view(), name='pedido__detail'),
-  path('', views.PedidoListView.as_view(), name='pedido__list'),
+  path('fechados', views.PedidoFechadoListView.as_view(), name='pedido__list__fechado'),
+  path('enviados/', views.PedidoEnviadoListView.as_view(), name='pedido__list__enviado'),
+  path('', views.PedidoCriadoListView.as_view(), name='pedido__list'),
 ]
